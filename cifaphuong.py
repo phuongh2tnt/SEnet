@@ -26,7 +26,8 @@ class AccuracyCallback:
                 correct += pred.eq(target.view_as(pred)).sum().item()
         accuracy = 100. * correct / len(data_loader.dataset)
         self.accuracies.append(accuracy)
-        print(f'Test set: Accuracy: {accuracy:.2f}%')
+        #doan nay sua code de in ra mo hinh dang dung
+        print(f'Test set {args.baseline}: Accuracy: {accuracy:.2f}%')
 
 def main():
     # Data loading
@@ -47,6 +48,7 @@ def main():
 
     # Model selection
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    #neu baseline duoc chi dinh khi chay python cifaphuong.py --baseline thi la true neu true thi resnes20 nguoc lai la se_resnet20
     if args.baseline:
         model = resnet20().to(device)
     else:
